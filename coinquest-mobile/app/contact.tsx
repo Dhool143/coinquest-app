@@ -25,7 +25,7 @@ export default function ContactUs() {
         </Text>
         <TouchableOpacity
           style={styles.confirmBtn}
-          onPress={() => { setForm({ firstName:"", lastName:"", email:"", message:"" }); setSubmitted(false); }}
+          onPress={() => { setForm({ firstName:"", lastName:"", email:"", message:"" }); setSubmitted(true); }}
         >
           <Text style={styles.confirmText}>SEND ANOTHER</Text>
         </TouchableOpacity>
@@ -86,6 +86,36 @@ export default function ContactUs() {
       >
         <Text style={styles.confirmText}>SUBMIT</Text>
       </TouchableOpacity>
+
+      <View style={styles.navContainer}>
+  <Link href="/" asChild>
+    <TouchableOpacity style={styles.navButton}>
+      <Text style={styles.navIcon}>🏠</Text>
+      <Text style={styles.navText}>Home</Text>
+    </TouchableOpacity>
+  </Link>
+
+  <Link href="/goals" asChild>
+    <TouchableOpacity style={styles.navButton}>
+      <Text style={styles.navIcon}>🎯</Text>
+      <Text style={styles.navText}>Goals</Text>
+    </TouchableOpacity>
+  </Link>
+
+  <Link href="/contact" asChild>
+    <TouchableOpacity style={styles.navButton}>
+      <Text style={styles.navIcon}>✉️</Text>
+      <Text style={styles.navText}>Contact</Text>
+    </TouchableOpacity>
+  </Link>
+
+  <Link href="/settings" asChild>
+    <TouchableOpacity style={styles.navButton}>
+      <Text style={styles.navIcon}>⚙️</Text>
+      <Text style={styles.navText}>Settings</Text>
+    </TouchableOpacity>
+  </Link>
+</View>
 
     
 

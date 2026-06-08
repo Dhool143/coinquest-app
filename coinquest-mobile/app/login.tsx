@@ -44,6 +44,8 @@ export default function LoginScreen() {
         </TouchableOpacity>
       </Link>
 
+      
+
       <Text style={styles.footer}>© 2026 CoinQuest Fathiya</Text>
     </View>
   );

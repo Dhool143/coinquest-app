@@ -43,30 +43,35 @@ export default function SettingScreen() {
       ))}
 
 
-<Link href="/login" asChild>
-  <TouchableOpacity style={styles.button}>
-    <Text style={styles.buttonText}>Login</Text>
-  </TouchableOpacity>
-</Link>
+<View style={styles.navContainer}>
+  <Link href="/" asChild>
+    <TouchableOpacity style={styles.navButton}>
+      <Text style={styles.navIcon}>🏠</Text>
+      <Text style={styles.navText}>Home</Text>
+    </TouchableOpacity>
+  </Link>
 
-<Link href="/goals" asChild>
-  <TouchableOpacity style={styles.button}>
-    <Text style={styles.buttonText}>Goals</Text>
-  </TouchableOpacity>
-</Link>
+  <Link href="/goals" asChild>
+    <TouchableOpacity style={styles.navButton}>
+      <Text style={styles.navIcon}>🎯</Text>
+      <Text style={styles.navText}>Goals</Text>
+    </TouchableOpacity>
+  </Link>
 
-<Link href="/contact" asChild>
-  <TouchableOpacity style={styles.button}>
-    <Text style={styles.buttonText}>Contact</Text>
-  </TouchableOpacity>
-</Link>
+  <Link href="/contact" asChild>
+    <TouchableOpacity style={styles.navButton}>
+      <Text style={styles.navIcon}>✉️</Text>
+      <Text style={styles.navText}>Contact</Text>
+    </TouchableOpacity>
+  </Link>
 
-<Link href="/settings" asChild>
-  <TouchableOpacity style={styles.button}>
-    <Text style={styles.buttonText}>Settings</Text>
-  </TouchableOpacity>
-</Link>
-
+  <Link href="/settings" asChild>
+    <TouchableOpacity style={styles.navButton}>
+      <Text style={styles.navIcon}>⚙️</Text>
+      <Text style={styles.navText}>Settings</Text>
+    </TouchableOpacity>
+  </Link>
+</View>
      
   
 
