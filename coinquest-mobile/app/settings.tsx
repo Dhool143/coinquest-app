@@ -5,35 +5,35 @@ export default function SettingScreen() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
 
-     
+      {/* Header */}
       <View style={styles.header}>
         <Text style={styles.headerTitle}>COINQUEST</Text>
       </View>
 
       <Text style={styles.title}>Settings</Text>
 
-     
+      {/* Avatar */}
       <View style={styles.avatarBlock}>
         <View style={styles.avatar}>
-          <Text style={styles.avatarText}>ID</Text>
+          <Text style={styles.avatarText}>JD</Text>
         </View>
         <View>
-          <Text style={styles.avatarName}>Isaac</Text>
-          <Text style={styles.avatarEmail}>Isaac.doe@email.com</Text>
+          <Text style={styles.avatarName}>Hasssan</Text>
+          <Text style={styles.avatarEmail}>hassan.Alie@email.com</Text>
         </View>
       </View>
 
-     
+      {/* User Settings */}
       <Text style={styles.sectionLabel}>User Settings</Text>
 
       {[
-        {  label: "Profile",       desc: "Edit your name and photo" },
-        { label: "Password",      desc: "Change your password" },
-        {  label: "Security",      desc: "Two-factor authentication" },
-        {  label: "Notifications", desc: "Manage alerts & emails" },
+        { icon: "👤", label: "Profile",       desc: "Edit your name and photo" },
+        { icon: "🔒", label: "Password",      desc: "Change your password" },
+        { icon: "🛡️", label: "Security",      desc: "Two-factor authentication" },
+        { icon: "🔔", label: "Notifications", desc: "Manage alerts & emails" },
       ].map((item) => (
         <TouchableOpacity key={item.label} style={styles.settingRow}>
-         
+          <Text style={styles.settingIcon}>{item.icon}</Text>
           <View style={styles.settingInfo}>
             <Text style={styles.settingLabel}>{item.label}</Text>
             <Text style={styles.settingDesc}>{item.desc}</Text>
@@ -42,40 +42,58 @@ export default function SettingScreen() {
         </TouchableOpacity>
       ))}
 
+      {/* Preferences */}
+      <Text style={styles.sectionLabel}>Preferences</Text>
 
-<View style={styles.navContainer}>
-  <Link href="/" asChild>
-    <TouchableOpacity style={styles.navButton}>
-      <Text style={styles.navIcon}>🏠</Text>
-      <Text style={styles.navText}>Home</Text>
-    </TouchableOpacity>
-  </Link>
+      {[
+        { icon: "🌐", label: "Language", desc: "English (US)" },
+        { icon: "🔐", label: "Privacy",  desc: "Manage data sharing" },
+        { icon: "❓", label: "Help",     desc: "FAQs & tutorials" },
+        { icon: "🎧", label: "Support",  desc: "Chat with our team" },
+      ].map((item) => (
+        <TouchableOpacity key={item.label} style={styles.settingRow}>
+          <Text style={styles.settingIcon}>{item.icon}</Text>
+          <View style={styles.settingInfo}>
+            <Text style={styles.settingLabel}>{item.label}</Text>
+            <Text style={styles.settingDesc}>{item.desc}</Text>
+          </View>
+          <Text style={styles.settingArrow}>›</Text>
+        </TouchableOpacity>
+      ))}
 
-  <Link href="/goals" asChild>
-    <TouchableOpacity style={styles.navButton}>
-      <Text style={styles.navIcon}>🎯</Text>
-      <Text style={styles.navText}>Goals</Text>
-    </TouchableOpacity>
-  </Link>
+      {/* Sign Out */}
+      <TouchableOpacity style={styles.signOutBtn}>
+        <Text style={styles.signOutText}>🚪  Sign Out</Text>
+      </TouchableOpacity>
 
-  <Link href="/contact" asChild>
-    <TouchableOpacity style={styles.navButton}>
-      <Text style={styles.navIcon}>✉️</Text>
-      <Text style={styles.navText}>Contact</Text>
-    </TouchableOpacity>
-  </Link>
+      {/* Bottom Nav */}
+      <View style={styles.navContainer}>
+        <Link href="/" asChild>
+          <TouchableOpacity style={styles.navButton}>
+            <Text style={styles.navIcon}>🏠</Text>
+            <Text style={styles.navText}>Home</Text>
+          </TouchableOpacity>
+        </Link>
+        <Link href="/goals" asChild>
+          <TouchableOpacity style={styles.navButton}>
+            <Text style={styles.navIcon}>🎯</Text>
+            <Text style={styles.navText}>Goals</Text>
+          </TouchableOpacity>
+        </Link>
 
-  <Link href="/settings" asChild>
-    <TouchableOpacity style={styles.navButton}>
-      <Text style={styles.navIcon}>⚙️</Text>
-      <Text style={styles.navText}>Settings</Text>
-    </TouchableOpacity>
-  </Link>
-</View>
-     
-  
-
-     
+        <Link href="/contact" asChild>
+          <TouchableOpacity style={styles.navButton}>
+            <Text style={styles.navIcon}>✉️</Text>
+            <Text style={styles.navText}>Contact</Text>
+          </TouchableOpacity>
+        </Link>
+        <Link href="/settings" asChild>
+          <TouchableOpacity style={styles.navButton}>
+            <Text style={styles.navIcon}>⚙️</Text>
+            <Text style={styles.navText}>Settings</Text>
+          </TouchableOpacity>
+        </Link>
+      </View>
 
       <Text style={styles.footer}>© 2026 CoinQuest Fathiya</Text>
     </ScrollView>
@@ -84,11 +102,12 @@ export default function SettingScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    maxWidth: 400,
-    width: "100%",
+    flexGrow: 1,
+    maxWidth: 380,
+    width: 400,
     alignSelf: "center",
     alignItems: "center",
-    padding: 20,
+    padding: 16,
     backgroundColor: "#f5f0e8",
   },
 
@@ -247,21 +266,6 @@ const styles = StyleSheet.create({
   navText: {
     color: "#ffffff",
     fontSize: 11,
-    fontWeight: "bold",
-  },
-
-
-  button: {
-    backgroundColor: "#2d6a4f",
-    padding: 12,
-    borderRadius: 15,
-    marginBottom: 10,
-    alignItems: "center",
-    width: "100%",
-  },
-  
-  buttonText: {
-    color: "#fff",
     fontWeight: "bold",
   },
 

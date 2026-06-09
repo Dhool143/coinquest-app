@@ -3,20 +3,22 @@ import { useState } from "react";
 import { Link } from "expo-router";
 
 const GOALS = [
-  { title: "Emergency Fund",  desc: "Save for unexpected expenses" },
-  {  title: "Saving Money",    desc: "Track savings towards goals" },
-  {  title: "Pay Off Debt",    desc: "Create a plan to pay off debt" },
-
-
+  { icon: "🚨", title: "Emergency Fund",  desc: "Save for unexpected expenses" },
+  { icon: "💸", title: "Saving Money",    desc: "Track savings towards goals" },
+  { icon: "💳", title: "Pay Off Debt",    desc: "Create a plan to pay off debt" },
+  { icon: "🏠", title: "Buy a Home",      desc: "Save for a down payment" },
+  { icon: "✈️", title: "Travel Fund",     desc: "Save for your dream vacation" },
+  { icon: "🎓", title: "Education",       desc: "Save for tuition or courses" },
 ];
+
 export default function GoalScreen() {
   const [selected, setSelected] = useState<string[]>([]);
-
   const toggle = (title: string) => {
     setSelected((prev) =>
       prev.includes(title)
         ? prev.filter((t) => t !== title)
         : [...prev, title]
+     
     );
   };
 
@@ -42,7 +44,7 @@ export default function GoalScreen() {
             onPress={() => toggle(goal.title)}
             style={[styles.goalCard, active && styles.goalCardActive]}
           >
-           
+            <Text style={styles.goalIcon}>{goal.icon}</Text>
             <View style={styles.goalInfo}>
               <Text style={[styles.goalTitle, active && styles.goalTitleActive]}>
                 {goal.title}
@@ -58,7 +60,7 @@ export default function GoalScreen() {
         );
       })}
 
-  
+      {/* Confirm Button */}
       <TouchableOpacity
         style={[styles.confirmBtn, selected.length === 0 && styles.confirmBtnDisabled]}
       >
@@ -67,39 +69,35 @@ export default function GoalScreen() {
         </Text>
       </TouchableOpacity>
 
+      {/* Bottom Nav */}
       <View style={styles.navContainer}>
-  <Link href="/" asChild>
-    <TouchableOpacity style={styles.navButton}>
-      <Text style={styles.navIcon}>🏠</Text>
-      <Text style={styles.navText}>Home</Text>
-    </TouchableOpacity>
-  </Link>
+        <Link href="/" asChild>
+          <TouchableOpacity style={styles.navButton}>
+            <Text style={styles.navIcon}>🏠</Text>
+            <Text style={styles.navText}>Home</Text>
+          </TouchableOpacity>
+        </Link>
+        <Link href="/goals" asChild>
+          <TouchableOpacity style={styles.navButton}>
+            <Text style={styles.navIcon}>🎯</Text>
+            <Text style={styles.navText}>Goals</Text>
+          </TouchableOpacity>
+        </Link>
 
-  <Link href="/goals" asChild>
-    <TouchableOpacity style={styles.navButton}>
-      <Text style={styles.navIcon}>🎯</Text>
-      <Text style={styles.navText}>Goals</Text>
-    </TouchableOpacity>
-  </Link>
+        <Link href="/contact" asChild>
+          <TouchableOpacity style={styles.navButton}>
+            <Text style={styles.navIcon}>✉️</Text>
+            <Text style={styles.navText}>Contact</Text>
+          </TouchableOpacity>
+        </Link>
+        <Link href="/settings" asChild>
+          <TouchableOpacity style={styles.navButton}>
+            <Text style={styles.navIcon}>⚙️</Text>
+            <Text style={styles.navText}>Settings</Text>
+          </TouchableOpacity>
+        </Link>
+      </View>
 
-  <Link href="/contact" asChild>
-    <TouchableOpacity style={styles.navButton}>
-      <Text style={styles.navIcon}>✉️</Text>
-      <Text style={styles.navText}>Contact</Text>
-    </TouchableOpacity>
-  </Link>
-
-  <Link href="/settings" asChild>
-    <TouchableOpacity style={styles.navButton}>
-      <Text style={styles.navIcon}>⚙️</Text>
-      <Text style={styles.navText}>Settings</Text>
-    </TouchableOpacity>
-  </Link>
-</View>
-
-
-
-    
       <Text style={styles.footer}>© 2026 CoinQuest Fathiya</Text>
     </ScrollView>
   );
@@ -107,11 +105,12 @@ export default function GoalScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    maxWidth: 400,
+    flexGrow: 1,
+    maxWidth: 375,
     width: "100%",
     alignSelf: "center",
     alignItems: "center",
-    padding: 20,
+    padding: 16,
     backgroundColor: "#f5f0e8",
   },
 
@@ -264,20 +263,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 
-
-  button: {
-    backgroundColor: "#2d6a4f",
-    padding: 12,
-    borderRadius: 15,
-    marginBottom: 10,
-    alignItems: "center",
-    width: "100%",
-  },
-  
-  buttonText: {
-    color: "#fff",
-    fontWeight: "bold",
-  },
   footer: {
     fontWeight: "bold",
     color: "#6b7280",

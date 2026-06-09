@@ -29,7 +29,6 @@ export default function HomeScreen() {
           <Text style={styles.secondaryText}>View Dashboard</Text>
         </Pressable>
       </Link>
-      
 
       <Text style={styles.footer}>© 2026 CoinQuest Fathiya</Text>
     </View>
@@ -120,8 +119,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 
- 
-
   footer: {
     fontWeight: "bold",
     color: "#6b7280",
@@ -129,4 +126,3 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
 });
-

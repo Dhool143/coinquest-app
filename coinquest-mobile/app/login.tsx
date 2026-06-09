@@ -1,5 +1,3 @@
-
-
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from "react-native";
 import { Link } from "expo-router";
 
@@ -43,8 +41,6 @@ export default function LoginScreen() {
           <Text style={styles.secondaryText}>Back to Home</Text>
         </TouchableOpacity>
       </Link>
-
-      
 
       <Text style={styles.footer}>© 2026 CoinQuest Fathiya</Text>
     </View>

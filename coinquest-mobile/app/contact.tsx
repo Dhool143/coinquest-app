@@ -9,7 +9,7 @@ export default function ContactUs() {
   });
   const [submitted, setSubmitted] = useState(false);
 
-  const update = (field: string) => (value: string ) => setForm({ ...form, [field]: value });
+  const update = (field:string ) => (value: string) => setForm({ ...form, [field]: (value )});
   const allFilled = form.firstName && form.lastName && form.email && form.message;
 
   if (submitted) {
@@ -25,7 +25,7 @@ export default function ContactUs() {
         </Text>
         <TouchableOpacity
           style={styles.confirmBtn}
-          onPress={() => { setForm({ firstName:"", lastName:"", email:"", message:"" }); setSubmitted(true); }}
+          onPress={() => { setForm({ firstName:"", lastName:"", email:"", message:"" }); setSubmitted(false); }}
         >
           <Text style={styles.confirmText}>SEND ANOTHER</Text>
         </TouchableOpacity>
@@ -87,38 +87,40 @@ export default function ContactUs() {
         <Text style={styles.confirmText}>SUBMIT</Text>
       </TouchableOpacity>
 
+      {/* Contact Info */}
+      {[
+        { icon: "📞", text: "1-800-COINQUEST" },
+        { icon: "✉️", text: "support@coinquest.com" },
+        { icon: "📍", text: "123 Finance St, Seattle, WA" },
+        { icon: "🕐", text: "Mon–Fri  9am – 6pm EST" },
+      ].map((c) => (
+        <View key={c.text} style={styles.infoRow}>
+          <Text style={styles.infoIcon}>{c.icon}</Text>
+          <Text style={styles.infoText}>{c.text}</Text>
+        </View>
+      ))}
+
+      {/* Bottom Nav */}
       <View style={styles.navContainer}>
-  <Link href="/" asChild>
-    <TouchableOpacity style={styles.navButton}>
-      <Text style={styles.navIcon}>🏠</Text>
-      <Text style={styles.navText}>Home</Text>
-    </TouchableOpacity>
-  </Link>
-
-  <Link href="/goals" asChild>
-    <TouchableOpacity style={styles.navButton}>
-      <Text style={styles.navIcon}>🎯</Text>
-      <Text style={styles.navText}>Goals</Text>
-    </TouchableOpacity>
-  </Link>
-
-  <Link href="/contact" asChild>
-    <TouchableOpacity style={styles.navButton}>
-      <Text style={styles.navIcon}>✉️</Text>
-      <Text style={styles.navText}>Contact</Text>
-    </TouchableOpacity>
-  </Link>
-
-  <Link href="/settings" asChild>
-    <TouchableOpacity style={styles.navButton}>
-      <Text style={styles.navIcon}>⚙️</Text>
-      <Text style={styles.navText}>Settings</Text>
-    </TouchableOpacity>
-  </Link>
-</View>
-
-    
-
+        <Link href="/" asChild>
+          <TouchableOpacity style={styles.navButton}>
+            <Text style={styles.navIcon}>🏠</Text>
+            <Text style={styles.navText}>Home</Text>
+          </TouchableOpacity>
+        </Link>
+        <Link href="/goals" asChild>
+          <TouchableOpacity style={styles.navButton}>
+            <Text style={styles.navIcon}>🎯</Text>
+            <Text style={styles.navText}>Goals</Text>
+          </TouchableOpacity>
+        </Link>
+        <Link href="/settings" asChild>
+          <TouchableOpacity style={styles.navButton}>
+            <Text style={styles.navIcon}>⚙️</Text>
+            <Text style={styles.navText}>Settings</Text>
+          </TouchableOpacity>
+        </Link>
+      </View>
 
       <Text style={styles.footer}>© 2026 CoinQuest Fathiya</Text>
     </ScrollView>
@@ -249,11 +251,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 
-  footer: {
-    fontWeight: "bold",
-    color: "#6b7280",
-    paddingBottom: 20,
-  },
+
 
   successIcon: {
     fontSize: 64,
@@ -275,4 +273,12 @@ const styles = StyleSheet.create({
     marginBottom: 24,
     paddingHorizontal: 20,
   },
+
+  footer: {
+    fontWeight: "bold",
+    color: "#6b7280",
+    paddingBottom: 10,
+    marginTop: 8,
+  },
+
 });

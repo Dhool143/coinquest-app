@@ -5,23 +5,23 @@ export default function DashboardScreenHome() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
 
-      
+      {/* Header */}
       <View style={styles.header}>
         <Text style={styles.headerTitle}>COINQUEST</Text>
       </View>
 
-      
+      {/* Welcome */}
       <Text style={styles.title}>Dashboard</Text>
-      <Text style={styles.greeting}>Good to see Isaac 👋</Text>
+      <Text style={styles.greeting}>Welcome Back 👋</Text>
 
-   
+      {/* Balance Card */}
       <View style={styles.balanceCard}>
         <Text style={styles.balanceLabel}>Total Savings</Text>
         <Text style={styles.balanceAmount}>$2,800</Text>
         <Text style={styles.balanceSub}>↑ +2.4% this month</Text>
       </View>
 
-    
+      {/* Stats Row */}
       <View style={styles.statsRow}>
         <View style={styles.statCard}>
           <Text style={styles.statIcon}>🎯</Text>
@@ -40,7 +40,7 @@ export default function DashboardScreenHome() {
         </View>
       </View>
 
-    
+      {/* Goal Progress */}
       <View style={styles.card}>
         <Text style={styles.cardTitle}>Goal Progress</Text>
 
@@ -63,38 +63,50 @@ export default function DashboardScreenHome() {
         <Text style={styles.progressPercent}>30%</Text>
       </View>
 
- 
+      {/* Recent Activity */}
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>Recent Activity</Text>
+        {[
+          { icon: "✅", text: "Added $100 to savings" },
+          { icon: "🎯", text: "Created Vacation Goal" },
+          { icon: "🏦", text: "Linked Bank Account" },
+          { icon: "📝", text: "Updated monthly target" },
+        ].map((item, i) => (
+          <View key={i} style={styles.activityRow}>
+            <Text style={styles.activityIcon}>{item.icon}</Text>
+            <Text style={styles.activityText}>{item.text}</Text>
+          </View>
+        ))}
+      </View>
+
+      {/* Bottom Nav */}
       <View style={styles.navContainer}>
-  <Link href="/" asChild>
-    <TouchableOpacity style={styles.navButton}>
-      <Text style={styles.navIcon}>🏠</Text>
-      <Text style={styles.navText}>Home</Text>
-    </TouchableOpacity>
-  </Link>
+        <Link href="/" asChild>
+          <TouchableOpacity style={styles.navButton}>
+            <Text style={styles.navIcon}>🏠</Text>
+            <Text style={styles.navText}>Home</Text>
+          </TouchableOpacity>
+        </Link>
+        <Link href="/goals" asChild>
+          <TouchableOpacity style={styles.navButton}>
+            <Text style={styles.navIcon}>🎯</Text>
+            <Text style={styles.navText}>Goals</Text>
+          </TouchableOpacity>
+        </Link>
 
-  <Link href="/goals" asChild>
-    <TouchableOpacity style={styles.navButton}>
-      <Text style={styles.navIcon}>🎯</Text>
-      <Text style={styles.navText}>Goals</Text>
-    </TouchableOpacity>
-  </Link>
-
-  <Link href="/contact" asChild>
-    <TouchableOpacity style={styles.navButton}>
-      <Text style={styles.navIcon}>✉️</Text>
-      <Text style={styles.navText}>Contact</Text>
-    </TouchableOpacity>
-  </Link>
-
-  <Link href="/settings" asChild>
-    <TouchableOpacity style={styles.navButton}>
-      <Text style={styles.navIcon}>⚙️</Text>
-      <Text style={styles.navText}>Settings</Text>
-    </TouchableOpacity>
-  </Link>
-</View>
-
-
+        <Link href="/contact" asChild>
+          <TouchableOpacity style={styles.navButton}>
+            <Text style={styles.navIcon}>✉️</Text>
+            <Text style={styles.navText}>Contact</Text>
+          </TouchableOpacity>
+        </Link>
+        <Link href="/settings" asChild>
+          <TouchableOpacity style={styles.navButton}>
+            <Text style={styles.navIcon}>⚙️</Text>
+            <Text style={styles.navText}>Settings</Text>
+          </TouchableOpacity>
+        </Link>
+      </View>
 
       <Text style={styles.footer}>© 2026 CoinQuest Fathiya</Text>
     </ScrollView>
@@ -103,12 +115,17 @@ export default function DashboardScreenHome() {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
-    backgroundColor: "#f5f0e8",
-    alignItems: "center",
-    maxWidth: 400,
+    flex: 1,
     width: "100%",
-    alignSelf: "center",
+    maxWidth: 430,       
+    alignSelf: "center",  
+    alignItems: "center",
+    padding: 16,
+    backgroundColor: "#f5f0e8",
+  },
+
+  dashboardCard: {
+    width: "100%",
   },
 
   header: {
@@ -288,21 +305,6 @@ const styles = StyleSheet.create({
   navText: {
     color: "#ffffff",
     fontSize: 11,
-    fontWeight: "bold",
-  },
-
-
-  button: {
-    backgroundColor: "#2d6a4f",
-    padding: 12,
-    borderRadius: 15,
-    marginBottom: 10,
-    alignItems: "center",
-    width: "100%",
-  },
-  
-  buttonText: {
-    color: "#fff",
     fontWeight: "bold",
   },
 
